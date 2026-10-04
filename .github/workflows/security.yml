@@ -34,10 +34,11 @@ jobs:
       - name: Build image for scanning
         run: docker build -t secure-pipeline-demo:${{ github.sha }} .
 
-      - name: Trivy filesystem + config scan
+      - name: Trivy filesystem scan (deps, misconfigs, secrets)
         uses: aquasecurity/trivy-action@master
         with:
-          scan-type: "fs,config"
+          scan-type: "fs"
+          scanners: "vuln,misconfig,secret"
           scan-ref: "."
           format: "sarif"
           output: "trivy-fs-config.sarif"
