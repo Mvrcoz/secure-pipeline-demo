@@ -41,7 +41,7 @@ jobs:
           scanners: "vuln,misconfig,secret"
           scan-ref: "."
           format: "sarif"
-          output: "trivy-fs-config.sarif"
+          output: "trivy-fs.sarif"
           severity: "CRITICAL,HIGH"
 
       - name: Trivy image scan
